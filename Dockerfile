@@ -20,9 +20,7 @@ RUN set -x; \
         && curl -o c.deb -SL http://ftp.br.debian.org/debian/pool/main/g/gcc-4.9/libgomp1_4.9.2-10+deb8u1_amd64.deb \
         && echo '40e8b906de658a2221b15e4e8cd82565a47d7ee8 wkhtmltox.deb' | sha1sum -c - \
         && dpkg --force-depends -i wkhtmltox.deb \
-        && dpkg -i a.deb \
-        && dpkg -i b.deb \
-        && dpkg -i c.deb \
+        && dpkg --force-depends -i a.deb b.deb c.deb \
         && apt-get -y install -f --no-install-recommends \
         && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false npm \
         && rm -rf /var/lib/apt/lists/* wkhtmltox.deb \
