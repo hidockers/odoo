@@ -36,7 +36,8 @@ RUN set -x; \
         && apt-get update \
         && apt-get -y install -f --no-install-recommends \
         && rm -rf /var/lib/apt/lists/* odoo.deb \ 
-        && pip install pycrypto
+        && pip install pycrypto \
+        && pip install pdfconv==1.0.11 unoconv==0.9.0 comtypes==1.1.7
 
 # Copy entrypoint script and Odoo configuration file
 COPY ./entrypoint.sh /
